@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter Full Name"
+        android:id="@+id/Full_Name"
         android:inputType="text"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 
@@ -49,46 +50,21 @@
 
     </TextView>
 
-    <EditText
-
-
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="User Name"
-        android:inputType="text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 
 
 
-        android:textSize="29sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="63dp" >
-
-    </EditText>
-
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        >
-
-    </TextView>
     <EditText
 
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contact No"
+        android:id="@+id/Contact_No"
 
         android:ems="10"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:textSize="29sp"
+
 
 
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -116,6 +92,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
+        android:id="@+id/Pass0"
         android:inputType="textPassword"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 
@@ -143,14 +120,40 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Confirmation Code"
+        android:hint="Email"
+        android:id="@+id/email"
 
         android:ems="10"
         android:inputType="text"
         android:textSize="29sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="63dp" >
+    </EditText>
 
 
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+
+    </TextView>
+
+    <EditText
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Birthdate"
+        android:id="@+id/Birthdate"
+
+
+        android:inputType="date"
+        android:textSize="29sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
@@ -161,6 +164,8 @@
 
 
     <RadioGroup
+
+        android:id="@+id/genderradiogroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -169,6 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gender"
+            android:id="@+id/Gender"
             android:textSize="20sp">
         </TextView>
 
@@ -176,6 +182,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Male"
+            android:id="@+id/male"
             android:textSize="20sp"
             android:layout_marginLeft="10dp">
 
@@ -185,6 +192,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:text="Female"
+            android:id="@+id/female"
+
             android:textSize="20sp">
 
         </RadioButton>
@@ -197,10 +206,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_rounded"
         android:text="Submit"
+        android:id="@+id/submit"
         android:layout_marginTop="20dp"
         android:textColor="#000000"
         android:textSize="22sp"
 
 
-        /> >
+        />
 </LinearLayout>
