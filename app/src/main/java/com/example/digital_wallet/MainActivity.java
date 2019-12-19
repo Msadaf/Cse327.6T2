@@ -38,14 +38,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-         /*
-@author nafisa alam
-
-@since since-19/dec/2019
-@deprecated represents spinner button catagory and choice function
-
-
- */
 
     }
 }
