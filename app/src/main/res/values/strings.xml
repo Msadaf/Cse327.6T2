@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Digital-Wallet</string>
+
+    <string-array name="catagory">
+        <item>Choose one </item>
+       <item>Cards</item>
+        <item>Tickets</item>
+        <item>Coupons</item>
+</string-array>
+    <string-array name="choice">
+        <item>Choose one </item>
+        <item>Cards</item>
+        <item>Tickets</item>
+        <item>Coupons</item>
+    </string-array>
+</resources>
