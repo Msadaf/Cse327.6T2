@@ -27,15 +27,15 @@ EditText password,contact_no;
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),password_string,Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),contact_no_string,Toast.LENGTH_SHORT).show();
-                if (password_string=="") {
+               // Toast.makeText(getApplicationContext(),password_string,Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(),contact_no_string,Toast.LENGTH_SHORT).show();
+                if (password_string.contains("")) {
                     password.setError("Enter password first");
                 }
                 if (contact_no_string=="") {
                     contact_no.setError("Enter Your Phone Number");
                 }
-               else {
+               if(password_string!=""&&contact_no_string!="") {
                     startActivity(new Intent(getApplicationContext(), Home.class));//HOME e jabe class name
                 }
             }
