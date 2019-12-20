@@ -11,7 +11,7 @@
      android:layout_width="match_parent"
      android:layout_height="50dp"
      android:hint="+ADD CARDS AND CREDNTIALS"
-     android:layout_marginTop="500dp"
+     android:layout_marginTop="200dp"
 
      />
 

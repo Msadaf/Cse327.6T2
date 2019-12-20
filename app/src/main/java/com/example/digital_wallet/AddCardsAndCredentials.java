@@ -94,6 +94,8 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         button_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 tittle_name_string=tittle_name.getText().toString().trim();
                 cards_num_string=cards_num.getText().toString().trim();
                 issue_date_string=issue_date.getText().toString().trim();
@@ -102,7 +104,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 catagory_item=catagory.getSelectedItem().toString();
                 descrption_details_string=descrption_details.getText().toString().trim();
                  //error text for edittext
-                Toast.makeText(getApplicationContext(),"tittle:"+tittle_name_string,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"tittle:"+tittle_name_string,Toast.LENGTH_SHORT).show();
                 if (tittle_name_string.equals("")) {
 
                     tittle_name.setError("Please Enter Meter Reading");
@@ -127,14 +129,14 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 switch (catagory_item){
 
                     case "Cards":
-                        Toast.makeText(getApplicationContext(),"cards:",Toast.LENGTH_SHORT).show();
-                        flag=1;
+                        //Toast.makeText(getApplicationContext(),"cards:",Toast.LENGTH_SHORT).show();
+                        flag++;
                         break;
                     case "Tickets":
-                        flag=1;
+                        flag++;
                         break;
                     case "Coupons":
-                        flag=1;
+                        flag++;
 
                         break;
                     case "Choose one":
@@ -152,12 +154,12 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 }
                 switch (choice_item){
                     case "Open Camera":
-                        flag=1;
+                        flag++;
                         cameraopen=1;
 
                         break;
                     case "Upload":
-                        flag=1;
+                        flag++;
                         break;
 
                     case "Choose one":
@@ -172,16 +174,18 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
                 }
 
-               /* if(flag==1){
-                    startActivity(new Intent(AddCardsAndCredentials.this,MainActivity.class));
-
-                }*/
-               if(flag==1&&cameraopen==1){
+               if(flag==3&&cameraopen==1){
                    startActivity(new Intent(AddCardsAndCredentials.this,ScanningQrCode.class));
+               }
+               else{
+                   Toast.makeText( AddCardsAndCredentials.this,"Select all field",Toast.LENGTH_SHORT).show();
                }
 
 
+
+
             }
+
         });
 
         //button submit function ends
