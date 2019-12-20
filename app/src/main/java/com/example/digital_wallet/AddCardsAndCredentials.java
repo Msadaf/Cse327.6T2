@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,7 +30,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
     Spinner choice;
     String catagory_item;
     String choice_item;
-    int flag=1;
+    int flag=1,cameraopen=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +100,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 expire_date_string=expire_date.getText().toString().trim();
                 choice_item=choice.getSelectedItem().toString();
                 catagory_item=catagory.getSelectedItem().toString();
+                descrption_details_string=descrption_details.getText().toString().trim();
                  //error text for edittext
                 Toast.makeText(getApplicationContext(),"tittle:"+tittle_name_string,Toast.LENGTH_SHORT).show();
                 if (tittle_name_string.equals("")) {
@@ -151,6 +153,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 switch (choice_item){
                     case "Open Camera":
                         flag=1;
+                        cameraopen=1;
 
                         break;
                     case "Upload":
@@ -169,10 +172,13 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
                 }
 
-                if(flag==1){
+               /* if(flag==1){
                     startActivity(new Intent(AddCardsAndCredentials.this,MainActivity.class));
 
-                }
+                }*/
+               if(flag==1&&cameraopen==1){
+                   startActivity(new Intent(AddCardsAndCredentials.this,ScanningQrCode.class));
+               }
 
 
             }
