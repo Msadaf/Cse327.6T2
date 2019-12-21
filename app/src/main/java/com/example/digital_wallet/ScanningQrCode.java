@@ -12,6 +12,8 @@ import android.os.Vibrator;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,11 +23,13 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 public class ScanningQrCode extends AppCompatActivity {
+    Button done_button;
     SurfaceView cameraView;
     TextView txtResult;
     BarcodeDetector barcodeDetector;
     CameraSource cameraSource;
     final int RequestCameraPermissionID=1;
+    public String qr_code_value_string;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,7 @@ public class ScanningQrCode extends AppCompatActivity {
         //Bind XML view
         cameraView=findViewById(R.id.cameraPreview);
         txtResult=findViewById(R.id.showResult);
+        done_button=findViewById(R.id.done_button);
 
         barcodeDetector=new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE)
                 .build();
@@ -89,8 +94,12 @@ public class ScanningQrCode extends AppCompatActivity {
                         @Override
                         public void run() {
                             //Here i am creating vibration so when we scan any barcode its vibrate
-
+                            if(sparseArray.valueAt(0).displayValue!=null){
+                                done_button.setVisibility(View.VISIBLE);
+                            }
                             txtResult.setText(sparseArray.valueAt(0).displayValue);
+                            qr_code_value_string=sparseArray.valueAt(0).displayValue;
+                            //Toast.makeText(getApplicationContext(),sparseArray.valueAt(0).displayValue,Toast.LENGTH_LONG).show();
                             //Thats All
                         }
                     });

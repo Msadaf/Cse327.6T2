@@ -49,7 +49,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
           expire_date=(EditText)findViewById(R.id.expiredate);
           descrption_details=(EditText)findViewById(R.id.description);
           catagory=(Spinner)findViewById(R.id.catagory);
-          choice=(Spinner)findViewById(R.id.choice);
+
           Button button_submit=(Button)findViewById(R.id.button_submit);
 
 /*
@@ -79,16 +79,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         catagory.setAdapter(adapter);
 
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.choice, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        choice.setAdapter(adapter1);
 
-
-         //spinner button value getting end
 
         //button submit function start
         button_submit.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +91,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 cards_num_string=cards_num.getText().toString().trim();
                 issue_date_string=issue_date.getText().toString().trim();
                 expire_date_string=expire_date.getText().toString().trim();
-                choice_item=choice.getSelectedItem().toString();
+
                 catagory_item=catagory.getSelectedItem().toString();
                 descrption_details_string=descrption_details.getText().toString().trim();
                  //error text for edittext
@@ -152,29 +143,8 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
 
                 }
-                switch (choice_item){
-                    case "Open Camera":
-                        flag++;
-                        cameraopen=1;
 
-                        break;
-                    case "Upload":
-                        flag++;
-                        break;
-
-                    case "Choose one":
-                        TextView errorText = (TextView)choice.getSelectedView();
-                        errorText.setError("");
-                        errorText.setTextColor(Color.RED);
-                        errorText.setText(" You must Select One Option");
-                        flag=0;
-
-                        break;
-
-
-                }
-
-               if(flag==3&&cameraopen==1){
+               if(flag==2){
                    startActivity(new Intent(AddCardsAndCredentials.this,ScanningQrCode.class));
                }
                else{
