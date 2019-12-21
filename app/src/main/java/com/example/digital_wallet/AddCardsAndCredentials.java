@@ -25,7 +25,7 @@ import android.widget.Toast;
 public class AddCardsAndCredentials extends AppCompatActivity  {
     //variables declaration
     EditText tittle_name,cards_num,issue_date,expire_date,descrption_details;
-    String tittle_name_string,cards_num_string,issue_date_string,expire_date_string,descrption_details_string;
+    String tittle_name_string,cards_num_string,issue_date_string,expire_date_string,descrption_details_string,catagory_item_string;
     Spinner catagory;
     Spinner choice;
     String catagory_item;
@@ -145,7 +145,14 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 }
 
                if(flag==2){
-                   startActivity(new Intent(AddCardsAndCredentials.this,ScanningQrCode.class));
+                   Intent intent=new Intent(AddCardsAndCredentials.this,ScanningQrCode.class);
+                   intent.putExtra("Tittle",tittle_name_string);
+                   intent.putExtra("Catagory",catagory_item_string);
+                   intent.putExtra("Card_and_crednum",cards_num_string);
+                   intent.putExtra("Issue_date",issue_date_string);
+                   intent.putExtra("Expire_date",expire_date_string);
+                   intent.putExtra("Phone","01632098926");
+                   startActivity(intent);
                }
                else{
                    Toast.makeText( AddCardsAndCredentials.this,"Select all field",Toast.LENGTH_SHORT).show();

@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -35,6 +36,7 @@ public class ScanningQrCode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanning_qr_code);
         //Bind XML view
+
         cameraView=findViewById(R.id.cameraPreview);
         txtResult=findViewById(R.id.showResult);
         done_button=findViewById(R.id.done_button);
@@ -95,12 +97,30 @@ public class ScanningQrCode extends AppCompatActivity {
                         public void run() {
                             //Here i am creating vibration so when we scan any barcode its vibrate
                             if(sparseArray.valueAt(0).displayValue!=null){
+                                txtResult.setText(sparseArray.valueAt(0).displayValue);
                                 done_button.setVisibility(View.VISIBLE);
+                                qr_code_value_string=sparseArray.valueAt(0).displayValue;
+                                done_button.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Toast.makeText(getApplicationContext(),getIntent().getStringExtra("Phone"),Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),getIntent().getStringExtra("Tittle"),Toast.LENGTH_SHORT).show();
+                                        //entry_to_database database=new entry_to_database(getIntent().getStringExtra("Phone"),)
+                                    }
+                                });
                             }
-                            txtResult.setText(sparseArray.valueAt(0).displayValue);
-                            qr_code_value_string=sparseArray.valueAt(0).displayValue;
+
+
+
+
                             //Toast.makeText(getApplicationContext(),sparseArray.valueAt(0).displayValue,Toast.LENGTH_LONG).show();
                             //Thats All
+                        }
+
+                        private void dataPass() {
+                            Intent intent=new Intent(ScanningQrCode.this,MainActivity.class);
+
+
                         }
                     });
                 }
@@ -109,6 +129,8 @@ public class ScanningQrCode extends AppCompatActivity {
         });
 
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

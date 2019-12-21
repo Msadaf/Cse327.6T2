@@ -27,25 +27,28 @@ String Phonenum="01788856789";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
         ((Button)findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
-            DatabaseReference ref = database.getReference("CardsAndCredentials/Catagory/Cards");
-            DatabaseReference ref1= database.getReference("CardsAndCredentials/Catagory/Tickets");
-            DatabaseReference ref2= database.getReference("CardsAndCredentials/Catagory/Coupons");
+
+
     @Override
     public void onClick(View view) {
-        //startActivity(new Intent(MainActivity.this,AddCardsAndCredentials.class));
+        startActivity(new Intent(MainActivity.this,AddCardsAndCredentials.class));
+//entry_to_database database=new entry_to_database();
+       // DatabaseReference refref = ref.child(Phonenum);
 
-
-        Map<String, entry_to_database> users = new HashMap<>();
-        //users.put("alanisawesome", new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf"));
+      //  Map<String, entry_to_database> users = new HashMap<>();
+       // users.put(Phonenum, new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf"));
        // users.put("gracehop", new entry_to_database("December 9, 1906", "Grace Hopper"));
 
-       ref.child(Phonenum).setValue(new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf"));
+      // ref.child(Phonenum).setValue(users.put(Phonenum, new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf")));
         //usersRef.child("gracehop").setValueAsync(new User("December 9, 1906", "Grace Hopper"));
+//refref.setValue(users);
+//ref.child(Phonenum).setValue( "111" );
 
-
-
+//ref.child(Phonenum).child("Tittle").setValue("cnc:djj");
+        //entry_to_database database2=new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf");
+        //database2.database();
 
 
     }
