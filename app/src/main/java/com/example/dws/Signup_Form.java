@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 /*@Author Sadia-mim
 Version @1.0
@@ -47,12 +47,12 @@ RadioButton male,female;
             @Override
             public void onClick(View v) {
                 // Write a message to the database
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
+               /* FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("message");
 
                // myRef.setValue("Hello, World!");
-                myRef.child("User").setValue("NAfisa Alam");
-                startActivity(new Intent(Signup_Form.this,Home.class));
+                myRef.child("User").setValue("NAfisa Alam");*/
+               startActivity(new Intent(Signup_Form.this,Authentication.class));
 
             }
         });

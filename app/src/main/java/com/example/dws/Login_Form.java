@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class Login_Form extends AppCompatActivity {
 EditText password,contact_no;
+    String contact_no_string;
+    int flag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +22,7 @@ EditText password,contact_no;
         password = (EditText) findViewById(R.id.pass1);
         contact_no = (EditText) findViewById(R.id.Contact);
         final String password_string = password.getText().toString().trim();
-        final String contact_no_string = contact_no.getText().toString().trim();
+         contact_no_string = contact_no.getText().toString().trim();
 
         Button Login = (Button) findViewById(R.id.login);
         Login.setOnClickListener(new View.OnClickListener() {
@@ -29,15 +31,20 @@ EditText password,contact_no;
             public void onClick(View v) {
                // Toast.makeText(getApplicationContext(),password_string,Toast.LENGTH_SHORT).show();
                // Toast.makeText(getApplicationContext(),contact_no_string,Toast.LENGTH_SHORT).show();
-                if (password_string.contains("")) {
+                if (password_string=="") {
                     password.setError("Enter password first");
+                    flag=0;
                 }
                 if (contact_no_string=="") {
                     contact_no.setError("Enter Your Phone Number");
+                    flag=0;
                 }
-               if(password_string!=""&&contact_no_string!="") {
-                    startActivity(new Intent(getApplicationContext(), Home.class));//HOME e jabe class name
-                }
+
+               if(flag==1){
+                   //String phonenumber="+"+contact_no_string;
+                  // startActivity(new Intent(getApplicationContext(), Authentication.class));
+                   startActivity(new Intent(getApplicationContext(),Authentication.class));
+               }
             }
 
         });
