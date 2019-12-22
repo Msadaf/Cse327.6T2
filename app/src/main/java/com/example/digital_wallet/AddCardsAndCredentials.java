@@ -2,6 +2,7 @@ package com.example.digital_wallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,10 +11,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /*
 @author nafisa alam
@@ -25,12 +34,17 @@ import android.widget.Toast;
 public class AddCardsAndCredentials extends AppCompatActivity  {
     //variables declaration
     EditText tittle_name,cards_num,issue_date,expire_date,descrption_details;
+    String phone_num="01788348747";
     String tittle_name_string,cards_num_string,issue_date_string,expire_date_string,descrption_details_string,catagory_item_string;
     Spinner catagory;
     Spinner choice;
     String catagory_item;
     String choice_item;
-    int flag=1,cameraopen=0;
+    int flag=1;
+    final Calendar issuedatecalender = Calendar.getInstance();
+    final Calendar expiredatecalender = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener date;
+    DatePickerDialog.OnDateSetListener mdate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +65,77 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
           catagory=(Spinner)findViewById(R.id.catagory);
 
           Button button_submit=(Button)findViewById(R.id.button_submit);
+         final String qr_code=getIntent().getStringExtra("Qr_Code");
+
+        date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                issuedatecalender.set(Calendar.YEAR, year);
+                issuedatecalender.set(Calendar.MONTH, monthOfYear);
+               issuedatecalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel(2);
+            }
+
+            private void updateLabel(int s) {
+                String myFormat = "MM/dd/yy"; //In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+                issue_date.setText(sdf.format(issuedatecalender.getTime()));
+
+
+            }
+
+        };
+        mdate = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                expiredatecalender.set(Calendar.YEAR, year);
+                expiredatecalender.set(Calendar.MONTH, monthOfYear);
+                expiredatecalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel("");
+            }
+
+            private void updateLabel(String s) {
+                String myFormat = "MM/dd/yy"; //In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+                expire_date.setText(sdf.format(expiredatecalender.getTime()));
+
+            }
+
+        };
+
+
+        issue_date.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(AddCardsAndCredentials.this, date, issuedatecalender
+                        .get(Calendar.YEAR), issuedatecalender.get(Calendar.MONTH),
+                        issuedatecalender.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        expire_date.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(AddCardsAndCredentials.this,mdate , issuedatecalender
+                        .get(Calendar.YEAR), issuedatecalender.get(Calendar.MONTH),
+                        issuedatecalender.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+         
+
 
 /*
 @author nafisa alam
@@ -95,7 +180,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 catagory_item=catagory.getSelectedItem().toString();
                 descrption_details_string=descrption_details.getText().toString().trim();
                  //error text for edittext
-                //Toast.makeText(getApplicationContext(),"tittle:"+tittle_name_string,Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(),"issuedate:"+issue_date_string+expire_date_string,Toast.LENGTH_SHORT).show();
                 if (tittle_name_string.equals("")) {
 
                     tittle_name.setError("Please Enter Meter Reading");
@@ -115,18 +200,22 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 }
                 else {
                     flag=1;
+
                 }
 
                 switch (catagory_item){
 
                     case "Cards":
                         //Toast.makeText(getApplicationContext(),"cards:",Toast.LENGTH_SHORT).show();
+                        catagory_item_string="Cards";
                         flag++;
                         break;
                     case "Tickets":
+                        catagory_item_string="Tickets";
                         flag++;
                         break;
                     case "Coupons":
+                        catagory_item_string="Coupons";
                         flag++;
 
                         break;
@@ -143,16 +232,22 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
 
                 }
+                entry_to_database database_add=new entry_to_database(phone_num,tittle_name_string,catagory_item_string,
+                        cards_num_string,issue_date_string,expire_date_string,
+                       descrption_details_string
+                        ,qr_code);
+                database_add.CreateDatabase();
 
                if(flag==2){
-                   Intent intent=new Intent(AddCardsAndCredentials.this,ScanningQrCode.class);
-                   intent.putExtra("Tittle",tittle_name_string);
+                   Intent intent=new Intent(AddCardsAndCredentials.this,ConfirmAdded.class);
+                   /*intent.putExtra("Tittle",tittle_name_string);
                    intent.putExtra("Catagory",catagory_item_string);
                    intent.putExtra("Card_and_crednum",cards_num_string);
                    intent.putExtra("Issue_date",issue_date_string);
                    intent.putExtra("Expire_date",expire_date_string);
-                   intent.putExtra("Phone","01632098926");
-                   startActivity(intent);
+                   intent.putExtra("Description",descrption_details_string);
+                   intent.putExtra("Phone",phone_num);
+                   startActivity(intent);*/
                }
                else{
                    Toast.makeText( AddCardsAndCredentials.this,"Select all field",Toast.LENGTH_SHORT).show();
