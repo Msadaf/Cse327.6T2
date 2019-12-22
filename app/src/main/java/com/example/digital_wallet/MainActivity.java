@@ -22,7 +22,7 @@ import java.util.Map;
 
  */
 public class MainActivity extends AppCompatActivity {
-String Phonenum="01788856789";
+String Phonenum="0175555555";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ String Phonenum="01788856789";
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(MainActivity.this,AddCardsAndCredentials.class));
+        startActivity(new Intent(MainActivity.this,ScanningQrCode.class));
 //entry_to_database database=new entry_to_database();
        // DatabaseReference refref = ref.child(Phonenum);
 
@@ -53,6 +53,12 @@ String Phonenum="01788856789";
 
     }
 });
+        ((Button)findViewById(R.id.View)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,ViewCardAndCredentials.class));
+            }
+        });
 
     }
 }

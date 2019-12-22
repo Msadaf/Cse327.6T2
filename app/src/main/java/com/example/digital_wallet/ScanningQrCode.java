@@ -31,6 +31,7 @@ public class ScanningQrCode extends AppCompatActivity {
     CameraSource cameraSource;
     final int RequestCameraPermissionID=1;
     public String qr_code_value_string;
+    String PhoneNum,Tittle,Catagory,CardNCredNum,IssueDate,ExpireDate,Desc,Qr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,17 @@ public class ScanningQrCode extends AppCompatActivity {
         cameraView=findViewById(R.id.cameraPreview);
         txtResult=findViewById(R.id.showResult);
         done_button=findViewById(R.id.done_button);
+        PhoneNum=getIntent().getStringExtra("Phone");
+        Tittle=getIntent().getStringExtra("Tittle");
+        Catagory= getIntent().getStringExtra("Catagory");
+        CardNCredNum=getIntent().getStringExtra("Card_and_crednum");
+
+        IssueDate=getIntent().getStringExtra("Issue_date");
+        ExpireDate=getIntent().getStringExtra("Expire_date");
+
+        Desc=getIntent().getStringExtra("Description");
+
+
 
         barcodeDetector=new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE)
                 .build();
@@ -103,9 +115,27 @@ public class ScanningQrCode extends AppCompatActivity {
                                 done_button.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Toast.makeText(getApplicationContext(),getIntent().getStringExtra("Phone"),Toast.LENGTH_SHORT).show();
-                                        Toast.makeText(getApplicationContext(),getIntent().getStringExtra("Tittle"),Toast.LENGTH_SHORT).show();
-                                        //entry_to_database database=new entry_to_database(getIntent().getStringExtra("Phone"),)
+                                        //Toast.makeText(getApplicationContext(),PhoneNum,Toast.LENGTH_SHORT).show();
+                                       //Toast.makeText(getApplicationContext(),"p"+PhoneNum+" t"+Tittle+" c"+Catagory+" c"+
+                                               //CardNCredNum+" i"+IssueDate+" e"+ExpireDate+" d"+
+                                               //Desc+" q"+qr_code_value_string,Toast.LENGTH_SHORT).show();
+
+                                       // Toast.makeText(getApplicationContext(),database_add.getCatagory() ,Toast.LENGTH_SHORT).show();
+                                        //entry_to_database d=new entry_to_database("474","jfj","Tickets","73437","7/8/27","5/5/5","fuffu",qr_code_value_string);
+                                       // d.CreateDatabase();
+                                        Intent intent =new Intent(ScanningQrCode.this,AddCardsAndCredentials.class);
+                                        /*intent.putExtra("PhoneNum",PhoneNum);
+                                        intent.putExtra("Tittle",Tittle);
+                                        intent.putExtra("Catagory",Catagory);
+                                        intent.putExtra("CardNCredNum",CardNCredNum);
+                                        intent.putExtra("IssueDate",IssueDate);
+                                        intent.putExtra("ExpireDate",ExpireDate);
+                                        intent.putExtra("Desc",Desc);*/
+                                        intent.putExtra("Qr_Code",qr_code_value_string);
+                                        startActivity(intent);
+
+
+
                                     }
                                 });
                             }
@@ -117,11 +147,7 @@ public class ScanningQrCode extends AppCompatActivity {
                             //Thats All
                         }
 
-                        private void dataPass() {
-                            Intent intent=new Intent(ScanningQrCode.this,MainActivity.class);
 
-
-                        }
                     });
                 }
 

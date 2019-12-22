@@ -7,10 +7,5 @@
         <item>Tickets</item>
         <item>Coupons</item>
     </string-array>
-    <string-array name="choice">
-        <item>Choose one </item>
-        <item>Open Camera</item>
-        <item>Upload</item>
 
-    </string-array>
 </resources>

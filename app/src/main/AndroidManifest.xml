@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.digital_wallet">
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -14,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScanningQrCode"></activity>
+        <activity android:name=".ViewCardAndCredentials"></activity>
+        <activity android:name=".ConfirmAdded" />
+        <activity android:name=".ScanningQrCode" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".AddCardsAndCredentials" />
         <activity android:name=".MainActivity">
@@ -25,7 +28,9 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="barcode"/>
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
     </application>
 
 </manifest>

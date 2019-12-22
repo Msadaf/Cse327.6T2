@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.digital_wallet"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -32,5 +32,7 @@ dependencies {
     //QR Code Scanner library
 
     implementation 'com.google.android.gms:play-services-vision:17.0.2'
+    //Qr Code Generator
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 
 }
