@@ -8,51 +8,55 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.editanddelete.Confirm;
+import com.example.editanddelete.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-       /* This "DeleteCards is extended from another another class which is auto built in"
-        * @param Unused.
-        * @return Nothing.
-        * @exception IOException On input error.
-        * @see IOException
-        */
+/**
+ * Delets cards and credentials from Database
+ * @author Ananna Talukder
+ *@version 1.2
+ *@since 22/12/2019
+
+ */
 
 public class DeleteCards extends AppCompatActivity {
 
 
-    /* @Author Ananna Talukder
-     *@version 1.3
-     *@since 22/12/2019
-     *@param  num is the string parameter
-     *@return nothing
-     */
 
-    String num="474";
+
+    String Phone_num;
     DatabaseReference databaseTicket;
-  //  EditText Tittle,Catagory,Cardnum,Desc,Issue_date,Expire_date;
-  //  String tittle,catagory,cardnum,issuedate,expiredate,description;
 
+    /**
+     * @exception NullPointerException
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_cards);
 
 
-         /*8       tittle=Tittle.getText().toString().trim();
-                cardnum=Cardnum.getText().toString().trim();
-                description=Desc.getText().toString().trim();
-                issuedate=Issue_date.getText().toString().trim();
-                expiredate=Expire_date.getText().toString().trim();*/
+
+try{
+    Phone_num=getIntent().getStringExtra("Phone_num").toString();
+}catch (Exception e){
+
+}finally {
 
 
+
+    Phone_num="01788348747";
+}
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
 
-               databaseTicket= database.getReference("CardsAndCredentials/Catagory/Tickets");
+               databaseTicket= database.getReference("CardsAndCredentials/Catagory/Cards");
 
-                databaseTicket.child(num).removeValue();
-                startActivity(new Intent(DeleteCards.this,Confirm.class));
+                databaseTicket.child(Phone_num).removeValue();
+                startActivity(new Intent(DeleteCards.this, Confirm.class));
 
             }
 
