@@ -27,9 +27,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Views Cards and Credentials,Links Edit and Delete Function
+ * @author nafisa alam
+ * @version 2.0
+ * @since 22/12/2019
+ *
+ */
 public class ViewCardAndCredentials extends AppCompatActivity {
 
-
+    /**
+     * variable declaration
+     */
     DatabaseReference database_cards;
     Button click;
     String PhoneNum;
@@ -40,12 +49,9 @@ public class ViewCardAndCredentials extends AppCompatActivity {
     QRGEncoder qrgEncoder;
     Bitmap bitmap;
     @Override
-    /*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
-            @param
-             */
+    /**
+     * @exception NullPointerException
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_card_and_credentials);
@@ -56,6 +62,9 @@ public class ViewCardAndCredentials extends AppCompatActivity {
         }finally {
             PhoneNum="01788348747";
         }
+        /**
+         * passing data from edittext
+         */
         click=(Button)findViewById(R.id.click);
        layout_id =(LinearLayout)findViewById(R.id.linear_layout_id);
         database_cards=FirebaseDatabase.getInstance().getReference().child("CardsAndCredentials").
@@ -75,13 +84,10 @@ public class ViewCardAndCredentials extends AppCompatActivity {
         final Button button_edit=(Button)findViewById(R.id.edit_btn);
         final Button button_delete=(Button)findViewById(R.id.button_submit);
       click.setOnClickListener(new View.OnClickListener() {
-
-          /*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
-            @param
-             */
+          /**
+           *
+           * @param view
+           */
           @Override
           public void onClick(View view) {
               database_cards.addValueEventListener(new ValueEventListener() {
@@ -102,7 +108,9 @@ public class ViewCardAndCredentials extends AppCompatActivity {
                        isssuedate.setText("Issue DAte: "+Issue_date);
                        expiredate.setText("Expire Date: "+Expire_date);
                        desc.setText("Description: "+Desc);
-
+/**
+ * Qr Code Generating from Text
+ */
                          if(Qr_code.length()>0){
                              WindowManager manager=(WindowManager)getSystemService(WINDOW_SERVICE);
                              Display display=manager.getDefaultDisplay();
@@ -112,6 +120,7 @@ public class ViewCardAndCredentials extends AppCompatActivity {
                              int height=point.y;
                              int smallerdimension=width<height?width:height;
                              smallerdimension=smallerdimension*3/4;
+
                              qrgEncoder=new QRGEncoder(Qr_code,null, QRGContents.Type.TEXT,smallerdimension);
                              try{
                                  bitmap=qrgEncoder.encodeAsBitmap();
@@ -123,7 +132,10 @@ public class ViewCardAndCredentials extends AppCompatActivity {
                          else{
 
                          }
-                        button_edit.setOnClickListener(new View.OnClickListener() {
+                      /**
+                       * Edit Cards and Credentials
+                       */
+                      button_edit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Intent intent=new Intent(ViewCardAndCredentials.this,EditCards.class);
@@ -137,6 +149,9 @@ public class ViewCardAndCredentials extends AppCompatActivity {
 
                             }
                         });
+                      /**
+                       * Delete Cards and Credentials
+                       */
                       button_delete.setOnClickListener(new View.OnClickListener() {
                           @Override
                           public void onClick(View view) {
@@ -157,6 +172,19 @@ public class ViewCardAndCredentials extends AppCompatActivity {
           }
       });
 
+
+    }
+    public String Catagory(String s) {
+        if (s.equals("Cards"))
+            s= "Cards";
+
+        if (s.equals("Tickets"))
+            s= "Cards";
+
+        if (s.equals("Coupons"))
+            s= "Coupons";
+
+        return s;
     }
 
 

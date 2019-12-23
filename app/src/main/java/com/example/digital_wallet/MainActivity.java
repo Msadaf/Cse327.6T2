@@ -14,23 +14,33 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
-@author nafisa alam
-@version 1.0
-@since since-19/dec/2019
-@deprecated represents home
 
+
+
+/**
+ * Displays Home Links Add,View,Offer function
+ * @author nafisa alam
+ * @since since-17/dec/2019
+ *@version 2.0
+ *
  */
+@SuppressWarnings("deprecation")
 public class MainActivity extends AppCompatActivity {
 String Phonenum;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/**
+ *@deprecated Button Function
+ */
         ((Button)findViewById(R.id.add_btn)).setOnClickListener(new View.OnClickListener() {
 
-
+            /**
+             * @deprecated to add Cards and credential , scanning the QR Code
+             * @param view
+             */
     @Override
     public void onClick(View view) {
         startActivity(new Intent(MainActivity.this,ScanningQrCode.class));
@@ -39,8 +49,15 @@ String Phonenum;
 
     }
 });
+        /**
+         *
+         */
         ((Button)findViewById(R.id.view_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
+            /**
+             * @deprecated to view Cards and credential , Viewing the QR Code
+             * @param view
+             */
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,ViewCardAndCredentials.class));
             }
@@ -49,10 +66,39 @@ String Phonenum;
 
         ((Button)findViewById(R.id.offer_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
+            /**
+             * @deprecated to view Offer , Viewing the QR Code
+             * @param view
+             */
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,Offer.class));
             }
         });
+        ((Button)findViewById(R.id.search_btn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            /**
+             * @deprecated to view Cards and credential , Viewing the QR Code
+             * @param view
+             */
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,Search.class));
+            }
+        });
 
+
+        ((Button)findViewById(R.id.history_btn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            /**
+             * @deprecated to view Offer , Viewing the QR Code
+             * @param view
+             */
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,History.class));
+            }
+        });
+
+/**
+ * @deprecated Button funtion Ends
+ */
     }
 }

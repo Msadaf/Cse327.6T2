@@ -23,6 +23,12 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
+/**
+ * Scan QR Code
+ * @author nafisa alam
+ * @version 2.0
+ * @since 19/Dec/2019
+ */
 public class ScanningQrCode extends AppCompatActivity {
     Button done_button;
     SurfaceView cameraView;
@@ -34,13 +40,10 @@ public class ScanningQrCode extends AppCompatActivity {
     String PhoneNum,Tittle,Catagory,CardNCredNum,IssueDate,ExpireDate,Desc,Qr;
 
 
-
-    /*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
-            @param
-             */
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,12 +116,11 @@ public class ScanningQrCode extends AppCompatActivity {
             public void release() {
 
             }
-            /*@Author Nafisa-Alam
-                        @Version
-                        @Since
-                        @See
-                        @param
-                         */
+
+            /**
+             * Detecting Qr Code
+             * @param detections
+             */
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
 
@@ -177,12 +179,12 @@ public class ScanningQrCode extends AppCompatActivity {
 
     }
 
-/*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
-            @param
-             */
+    /**
+     * request for camera permission
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

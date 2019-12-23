@@ -24,24 +24,33 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/*
-@author nafisa alam
-@version
-@since since-19/dec/2019
-@deprecated  class where user will add cards and credentials
-@param
+/**
+ * Adds Cards and Credentials
+ * @author nafisa alam
+ * @version
+ * @since since-17/dec/2019
+ *  @docRoot MainActivity.class
+ * @param
  */
 
+@SuppressWarnings("deprecation")
 public class AddCardsAndCredentials extends AppCompatActivity  {
-    //variables declaration
+    /**
+     *  Variable declaration For EditText
+     */
     EditText tittle_name,cards_num,issue_date,expire_date,descrption_details;
+    /**
+     *  String Variable Declaration
+     */
     String phone_num;
     String tittle_name_string,cards_num_string,issue_date_string,expire_date_string,descrption_details_string,catagory_item_string;
     Spinner catagory;
-    Spinner choice;
     String catagory_item;
-    String choice_item;
+
     int flag=1;
+    /**
+     * Variable declaration For Calender View
+     */
     final Calendar issuedatecalender = Calendar.getInstance();
     final Calendar expiredatecalender = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date;
@@ -52,12 +61,8 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cards_and_credentials);
 
-/*
-@author nafisa alam
-
-@since since-19/dec/2019
-@deprecated represents variable value getting from the ui
-
+/**
+ *  EditText passing data From Layout
  */
           tittle_name=(EditText)findViewById(R.id.tittle);
           cards_num=(EditText)findViewById(R.id.cardandcrednum);
@@ -65,7 +70,10 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
           expire_date=(EditText)findViewById(R.id.expiredate);
           descrption_details=(EditText)findViewById(R.id.description);
           catagory=(Spinner)findViewById(R.id.catagory);
-
+/**
+ *  Button Submit For Next
+ * @exception throws null pointer Exception
+ */
           Button button_submit=(Button)findViewById(R.id.button_submit);
          final String qr_code=getIntent().getStringExtra("Qr_Code");
          try {
@@ -77,12 +85,13 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
          }
         date = new DatePickerDialog.OnDateSetListener() {
 
-            /*@Author Nafisa Alam
-            * @Version
-            * @Since
-            * @Param
-            * @See*/
-
+            /**
+             * View Calender
+             * @param view
+             * @param year
+             * @param monthOfYear
+             * @param dayOfMonth
+             */
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
@@ -92,10 +101,10 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                issuedatecalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabel(2);
             }
-            /*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
+
+            /**
+             * Set Date to ISsue date edit text
+             * @param s
              */
             private void updateLabel(int s) {
                 String myFormat = "MM/dd/yy"; //In which you need put here
@@ -109,10 +118,12 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         };
         mdate = new DatePickerDialog.OnDateSetListener() {
 
-            /*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
+            /**
+             *
+             * @param view
+             * @param year
+             * @param monthOfYear
+             * @param dayOfMonth
              */
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -124,6 +135,10 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                 updateLabel("");
             }
 
+            /**
+             * Expire Date Edittext Set date
+             * @param s
+             */
             private void updateLabel(String s) {
                 String myFormat = "MM/dd/yy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -136,13 +151,11 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
 
         issue_date.setOnClickListener(new View.OnClickListener() {
-            /*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
-            @param
-             */
 
+            /**
+             * Get issuedate as String
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -153,12 +166,10 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         });
 
         expire_date.setOnClickListener(new View.OnClickListener() {
-            /*@Author Nafisa-Alam
-                        @Version
-                        @Since
-                        @See
-                        @param
-                         */
+            /**
+             * Get expiredate as String
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -170,31 +181,17 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         });
 
 
-
-/*
-@author nafisa alam
-
-@since since-19/dec/2019
-@deprecated covetrt edittext to string
-
+/**
+ * Drop Down Button for Catagory
  */
 
-
-
-
-          /*
-@author nafisa alam
-
-@since since-19/dec/2019
-@deprecated represents spinner button value
-
- */
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.catagory, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
+
         catagory.setAdapter(adapter);
 
 
@@ -202,11 +199,10 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
         //button submit function start
         button_submit.setOnClickListener(new View.OnClickListener() {
-            /*@Author Nafisa-Alam
-            @Version
-            @Since
-            @See
-            @param
+            /**
+             * getting String From Edittext,Passing values to
+             * @exception NullPointerException
+             * @param view
              */
             @Override
             public void onClick(View view) {
@@ -219,8 +215,11 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
                 catagory_item=catagory.getSelectedItem().toString();
                 descrption_details_string=descrption_details.getText().toString().trim();
-                 //error text for edittext
+
                // Toast.makeText(getApplicationContext(),"issuedate:"+issue_date_string+expire_date_string,Toast.LENGTH_SHORT).show();
+                /**
+                 * Setting Error text for not filling
+                 */
                 if (tittle_name_string.equals("")) {
 
                     tittle_name.setError("Please Enter Meter Reading");
@@ -272,6 +271,9 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
 
                 }
+                /**
+                 * Object creating
+                 */
                 entry_to_database database_add=new entry_to_database(phone_num,tittle_name_string,catagory_item_string,
                         cards_num_string,issue_date_string,expire_date_string,
                        descrption_details_string
@@ -280,14 +282,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
                if(flag==2){
                    Intent intent=new Intent(AddCardsAndCredentials.this,ConfirmAdded.class);
-                   /*intent.putExtra("Tittle",tittle_name_string);
-                   intent.putExtra("Catagory",catagory_item_string);
-                   intent.putExtra("Card_and_crednum",cards_num_string);
-                   intent.putExtra("Issue_date",issue_date_string);
-                   intent.putExtra("Expire_date",expire_date_string);
-                   intent.putExtra("Description",descrption_details_string);
-                   intent.putExtra("Phone",phone_num);
-                   startActivity(intent);*/
+
                }
                else{
                    Toast.makeText( AddCardsAndCredentials.this,"Select all field",Toast.LENGTH_SHORT).show();
@@ -300,7 +295,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
         });
 
-        //button submit function ends
+
 
 
 
@@ -309,16 +304,6 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
 
 
-//main function ends
 
-    /*
-@author nafisa alam
-
-@since since-19/dec/2019
-@deprecated method of Spinner regarding catagory and choice
-@param position of catagory
-@return none
-
- */
 
 }
