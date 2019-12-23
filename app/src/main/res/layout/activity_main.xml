@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
  <Button
-     android:id="@+id/button"
+     android:id="@+id/add_btn"
      android:layout_width="match_parent"
      android:layout_height="50dp"
      android:hint="+ADD CARDS AND CREDNTIALS"
@@ -15,10 +15,18 @@
 
      />
  <Button
-     android:id="@+id/View"
+     android:id="@+id/view_btn"
      android:layout_width="match_parent"
      android:layout_height="50dp"
      android:hint="View"
+     android:layout_marginTop="200dp"
+
+     />
+ <Button
+     android:id="@+id/offer_btn"
+     android:layout_width="match_parent"
+     android:layout_height="50dp"
+     android:hint="Offer"
      android:layout_marginTop="200dp"
 
      />

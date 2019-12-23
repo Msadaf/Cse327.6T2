@@ -22,41 +22,35 @@ import java.util.Map;
 
  */
 public class MainActivity extends AppCompatActivity {
-String Phonenum="0175555555";
+String Phonenum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((Button)findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
+        ((Button)findViewById(R.id.add_btn)).setOnClickListener(new View.OnClickListener() {
 
 
     @Override
     public void onClick(View view) {
         startActivity(new Intent(MainActivity.this,ScanningQrCode.class));
-//entry_to_database database=new entry_to_database();
-       // DatabaseReference refref = ref.child(Phonenum);
 
-      //  Map<String, entry_to_database> users = new HashMap<>();
-       // users.put(Phonenum, new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf"));
-       // users.put("gracehop", new entry_to_database("December 9, 1906", "Grace Hopper"));
-
-      // ref.child(Phonenum).setValue(users.put(Phonenum, new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf")));
-        //usersRef.child("gracehop").setValueAsync(new User("December 9, 1906", "Grace Hopper"));
-//refref.setValue(users);
-//ref.child(Phonenum).setValue( "111" );
-
-//ref.child(Phonenum).child("Tittle").setValue("cnc:djj");
-        //entry_to_database database2=new entry_to_database("111","my card","Cards","1234","1/2/2012","2/4/2020","jkdjf");
-        //database2.database();
 
 
     }
 });
-        ((Button)findViewById(R.id.View)).setOnClickListener(new View.OnClickListener() {
+        ((Button)findViewById(R.id.view_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,ViewCardAndCredentials.class));
+            }
+        });
+
+
+        ((Button)findViewById(R.id.offer_btn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,Offer.class));
             }
         });
 

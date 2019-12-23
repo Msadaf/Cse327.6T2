@@ -26,15 +26,16 @@ import java.util.Date;
 
 /*
 @author nafisa alam
-
+@version
 @since since-19/dec/2019
 @deprecated  class where user will add cards and credentials
-
+@param
  */
+
 public class AddCardsAndCredentials extends AppCompatActivity  {
     //variables declaration
     EditText tittle_name,cards_num,issue_date,expire_date,descrption_details;
-    String phone_num="01788348747";
+    String phone_num;
     String tittle_name_string,cards_num_string,issue_date_string,expire_date_string,descrption_details_string,catagory_item_string;
     Spinner catagory;
     Spinner choice;
@@ -46,6 +47,7 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
     DatePickerDialog.OnDateSetListener date;
     DatePickerDialog.OnDateSetListener mdate;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_cards_and_credentials);
@@ -66,8 +68,20 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
           Button button_submit=(Button)findViewById(R.id.button_submit);
          final String qr_code=getIntent().getStringExtra("Qr_Code");
+         try {
+             phone_num = getIntent().getStringExtra("Phone_num").toString();
+         }catch (Exception e){
 
+         }finally {
+             phone_num="01788348747";
+         }
         date = new DatePickerDialog.OnDateSetListener() {
+
+            /*@Author Nafisa Alam
+            * @Version
+            * @Since
+            * @Param
+            * @See*/
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -78,7 +92,11 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
                issuedatecalender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabel(2);
             }
-
+            /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+             */
             private void updateLabel(int s) {
                 String myFormat = "MM/dd/yy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -91,6 +109,11 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         };
         mdate = new DatePickerDialog.OnDateSetListener() {
 
+            /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+             */
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
@@ -113,6 +136,12 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
 
         issue_date.setOnClickListener(new View.OnClickListener() {
+            /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+            @param
+             */
 
             @Override
             public void onClick(View v) {
@@ -124,7 +153,12 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
         });
 
         expire_date.setOnClickListener(new View.OnClickListener() {
-
+            /*@Author Nafisa-Alam
+                        @Version
+                        @Since
+                        @See
+                        @param
+                         */
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -168,6 +202,12 @@ public class AddCardsAndCredentials extends AppCompatActivity  {
 
         //button submit function start
         button_submit.setOnClickListener(new View.OnClickListener() {
+            /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+            @param
+             */
             @Override
             public void onClick(View view) {
 

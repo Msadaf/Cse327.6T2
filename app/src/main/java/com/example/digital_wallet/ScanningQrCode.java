@@ -32,6 +32,15 @@ public class ScanningQrCode extends AppCompatActivity {
     final int RequestCameraPermissionID=1;
     public String qr_code_value_string;
     String PhoneNum,Tittle,Catagory,CardNCredNum,IssueDate,ExpireDate,Desc,Qr;
+
+
+
+    /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+            @param
+             */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +70,13 @@ public class ScanningQrCode extends AppCompatActivity {
         //Now add event to show camera preview
 
         cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
+
+            /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+            @param
+             */
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 //Check permissions here first
@@ -97,7 +113,12 @@ public class ScanningQrCode extends AppCompatActivity {
             public void release() {
 
             }
-
+            /*@Author Nafisa-Alam
+                        @Version
+                        @Since
+                        @See
+                        @param
+                         */
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
 
@@ -156,7 +177,12 @@ public class ScanningQrCode extends AppCompatActivity {
 
     }
 
-
+/*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+            @param
+             */
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

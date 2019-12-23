@@ -5,6 +5,7 @@ import androidmads.library.qrgenearator.QRGEncoder;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.nfc.Tag;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,9 +29,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ViewCardAndCredentials extends AppCompatActivity {
 
+
     DatabaseReference database_cards;
     Button click;
-    String PhoneNum="01788348747";
+    String PhoneNum;
     String Tittle,Catagory,Cardnum,Issue_date,Expire_date,Desc,Qr_code;
     TextView tv,tittle,catagory,cardnum,isssuedate,expiredate,desc;
     ImageView qr_code;
@@ -37,9 +40,22 @@ public class ViewCardAndCredentials extends AppCompatActivity {
     QRGEncoder qrgEncoder;
     Bitmap bitmap;
     @Override
+    /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+            @param
+             */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_card_and_credentials);
+        try {
+            PhoneNum = getIntent().getStringExtra("Phone_num").toString();
+        }catch (Exception e){
+
+        }finally {
+            PhoneNum="01788348747";
+        }
         click=(Button)findViewById(R.id.click);
        layout_id =(LinearLayout)findViewById(R.id.linear_layout_id);
         database_cards=FirebaseDatabase.getInstance().getReference().child("CardsAndCredentials").
@@ -56,7 +72,16 @@ public class ViewCardAndCredentials extends AppCompatActivity {
      expiredate=(TextView)findViewById(R.id.expiredate);
      desc=(TextView)findViewById(R.id.description);
      qr_code=(ImageView)findViewById(R.id.qrcode);
+        final Button button_edit=(Button)findViewById(R.id.edit_btn);
+        final Button button_delete=(Button)findViewById(R.id.button_submit);
       click.setOnClickListener(new View.OnClickListener() {
+
+          /*@Author Nafisa-Alam
+            @Version
+            @Since
+            @See
+            @param
+             */
           @Override
           public void onClick(View view) {
               database_cards.addValueEventListener(new ValueEventListener() {
@@ -98,6 +123,29 @@ public class ViewCardAndCredentials extends AppCompatActivity {
                          else{
 
                          }
+                        button_edit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent=new Intent(ViewCardAndCredentials.this,EditCards.class);
+                                intent.putExtra("tittle",Tittle);
+                                intent.putExtra("phone_num",PhoneNum);
+                                intent.putExtra("cardnum",Cardnum);
+                                intent.putExtra("issuedate",Issue_date);
+                                intent.putExtra("expiredate",Expire_date);
+                                intent.putExtra("description",Desc);
+                                startActivity(intent);
+
+                            }
+                        });
+                      button_delete.setOnClickListener(new View.OnClickListener() {
+                          @Override
+                          public void onClick(View view) {
+                              startActivity(new Intent(ViewCardAndCredentials.this,DeleteCards.class));
+
+                          }
+                      });
+
+
                   }
 
                   @Override

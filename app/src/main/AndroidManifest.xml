@@ -15,10 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewCardAndCredentials"></activity>
+        <activity android:name=".Offer"></activity>
+        <activity android:name=".DeleteCards" />
+        <activity android:name=".EditCards" />
+        <activity android:name=".ViewCardAndCredentials" />
         <activity android:name=".ConfirmAdded" />
         <activity android:name=".ScanningQrCode" />
-        <activity android:name=".Main2Activity" />
         <activity android:name=".AddCardsAndCredentials" />
         <activity android:name=".MainActivity">
             <intent-filter>
