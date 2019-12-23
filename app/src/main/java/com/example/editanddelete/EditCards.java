@@ -9,11 +9,29 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+/*
+ This "EditCards is extended from another another class which is auto built in"
+ * @param Unused.
+ * @return Nothing.
+ * @exception IOException On input error.
+ * @see IOException
+ */
 public class EditCards extends AppCompatActivity {
+
+    /* @Author Ananna Talukder
+    *@version 1.2
+    *@since 22/12/2019
+    *@param  phonenum is the string parameter
+    *@return nothing
+    */
+
     String Phonenum="01788348747";
     DatabaseReference databaseTicket;
 EditText Tittle,Catagory,Cardnum,Desc,Issue_date,Expire_date;
+
+/*@param tittle,catagory,cardnum,issuedate,xpiredate,description are string parameters
+
+ */
     String tittle,catagory,cardnum,issuedate,expiredate,description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

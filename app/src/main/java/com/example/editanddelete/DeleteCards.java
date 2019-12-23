@@ -11,7 +11,23 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+       /* This "DeleteCards is extended from another another class which is auto built in"
+        * @param Unused.
+        * @return Nothing.
+        * @exception IOException On input error.
+        * @see IOException
+        */
+
 public class DeleteCards extends AppCompatActivity {
+
+
+    /* @Author Ananna Talukder
+     *@version 1.3
+     *@since 22/12/2019
+     *@param  num is the string parameter
+     *@return nothing
+     */
 
     String num="474";
     DatabaseReference databaseTicket;
