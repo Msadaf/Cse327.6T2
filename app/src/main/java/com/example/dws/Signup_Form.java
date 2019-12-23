@@ -15,9 +15,10 @@ import android.widget.Toast;
 //import com.google.firebase.database.DatabaseReference;
 //import com.google.firebase.database.FirebaseDatabase;
 
-/*@Author Sadia-mim
-Version @1.0
-Since 17.12.2019
+/**new user signup the system
+ * @author  Sadia-mim
+@version  @1.0
+@since  19.12.2019
 
  */
 public class Signup_Form extends AppCompatActivity {
@@ -26,6 +27,7 @@ String full_name_string,Contact_string,password_string,email_string,Birthdate_st
 RadioGroup gender;
 RadioButton male,female;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup__form);
@@ -47,6 +49,7 @@ RadioButton male,female;
        gender.clearCheck();
        gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
            @SuppressLint("ResourceType")
+
            @Override
            public void onCheckedChanged(RadioGroup group, int checkedId) {
                RadioButton rb=(RadioButton)group.findViewById(checkedId);
@@ -56,12 +59,7 @@ RadioButton male,female;
            }
        });
         Submit.setOnClickListener(new View.OnClickListener()
-        /*
-        @author Sadia-mim
-        @version 1.0
-        @Since 17.12.2019
-        @deprecated click submit button go to home class ,alternative go to login class
-        * */
+
 
         {
             @Override
