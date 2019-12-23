@@ -99,7 +99,9 @@ public class Authentication extends AppCompatActivity {
             public void onClick(View v) {
                 if(randomNumber==Integer.valueOf(_txt_VerOTP.getText().toString())){
                     Toast.makeText(getApplicationContext(), " LOGIN Successfull", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(Authentication.this,MainActivity.class));
+                     Intent intent=new Intent(Authentication.this,MainActivity.class);
+                     intent.putExtra("Phone_num",getIntent().getStringExtra("Phone_num").toString());
+                     startActivity(intent);
 
                 }else{
                     startActivity(new Intent(Authentication.this,MainActivity.class));

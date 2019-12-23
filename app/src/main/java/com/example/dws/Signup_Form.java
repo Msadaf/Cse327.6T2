@@ -95,7 +95,9 @@ RadioButton male,female;
               }catch (Exception e){
                   Toast.makeText(getApplicationContext(),"database"+e.getMessage(),Toast.LENGTH_LONG).show();
               }
-               startActivity(new Intent(Signup_Form.this,Authentication.class));
+              Intent intent=new Intent(Signup_Form.this,Authentication.class);
+              intent.putExtra("Phone_num",Contact_string);
+              startActivity(intent);
 
             }
         });

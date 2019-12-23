@@ -24,7 +24,8 @@ public class Offer extends AppCompatActivity {
 
     /*@author sadia-mim
     @version 1.5
-    @param
+    @param object
+    @depricated
     @since 22.12.2019
      */
     @Override
@@ -48,6 +49,8 @@ public class Offer extends AppCompatActivity {
                     @version 1.5
                     @param object , return null value
                     @since 22.12.2019
+                    @depricated show database offer
+                    @throws exception
                     @see https://www.youtube.com/watch?v=LpWhAz3e1sI&t=35s
                      */
                     @Override

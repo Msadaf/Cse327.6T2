@@ -59,7 +59,9 @@ public class Login_Form extends AppCompatActivity {
                             if(contact_no_string==dataSnapshot.child("Phone Num").getValue().toString()){
                                 if(password_string==dataSnapshot.child("Password").getValue().toString()){
                                     Toast.makeText(getApplicationContext(),"Log in Successful",Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(Login_Form.this,Authentication.class));
+                                    Intent intent=new Intent(Login_Form.this,Authentication.class);
+                                    intent.putExtra("Phone_num",contact_no_string);
+                                    startActivity(intent);
                                 }
                                 else{
                                     password.setError("Password is incorrect");
