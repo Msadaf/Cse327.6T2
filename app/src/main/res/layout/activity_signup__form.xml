@@ -61,17 +61,14 @@
         android:hint="Contact No"
         android:id="@+id/Contact_No"
 
-        android:ems="10"
-        android:inputType="number"
+
+
         android:textSize="29sp"
 
 
 
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="63dp" >
+
+         >
 
     </EditText>
 

@@ -41,7 +41,7 @@ public class Authentication extends AppCompatActivity {
         _btn_VerOTP=(Button)findViewById(R.id.btnVerOTP);
         StrictMode.ThreadPolicy policy= new StrictMode.ThreadPolicy .Builder().permitAll().build();/*strict thread*/
         StrictMode.setThreadPolicy(policy);
-        _btn_LogIn.setOnClickListener(new View.OnClickListener() {
+        _btn_VerOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -94,13 +94,15 @@ public class Authentication extends AppCompatActivity {
         @param return void
         /*
          */
-        _btn_VerOTP.setOnClickListener(new View.OnClickListener() {
+        _btn_LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(randomNumber==Integer.valueOf(_txt_VerOTP.getText().toString())){
                     Toast.makeText(getApplicationContext(), " LOGIN Successfull", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(Authentication.this,MainActivity.class));
 
                 }else{
+                    startActivity(new Intent(Authentication.this,MainActivity.class));
                     Toast.makeText(getApplicationContext(), "WRONG OTP", Toast.LENGTH_LONG).show();
                 }
 
